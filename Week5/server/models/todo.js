@@ -1,5 +1,5 @@
 const mongoose = require('mongoose')
-const Shema = mongoose.Shema
+const Schema = mongoose.Schema
 
 const todoSchema = new mongoose.Schema({
     title: {

@@ -5,13 +5,14 @@ import Todo from './todo.js'
 import { userContext } from '../context/UserProvider.js'
 
 export default function Profile(){
-    const { user: {username}, addTodo } = useContext(UserContext)
+    const { user: {username}, addTodo, todos } = useContext(UserContext)
     return (
         <div className="profile">
             <h1>Welcome @{username}!</h1>
             <h3>Add a Todo</h3>
             <TodoForm addTodo={addTodo}/>
             <h3>Your Todos</h3>
+            <TodoList todos={todos}/>
         </div>
     )
 }

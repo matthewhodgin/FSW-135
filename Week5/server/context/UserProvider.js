@@ -56,7 +56,23 @@ export default function UserProvider(props) {
 
     function addTodo(newTodo) {
         userAxios.post('/api.todo', newTodo)
-            .then(res => console.log(res))
+            .then(res => {
+                setUserState(prevState => ({
+                    ...prevState,
+                    todos: [...prevState.todos, res.data]
+                }))
+            })
+            .catch(err => console.log(err.response.data.errMsg))
+    }
+
+    function getUserTodos() {
+        userAxios.post('/api.todo/user')
+            .then(res => {
+                setUserState(prevState => ({
+                    ...prevState,
+                    todos: res.data
+                }))
+            })
             .catch(err => console.log(err.response.data.errMsg))
     }
 
