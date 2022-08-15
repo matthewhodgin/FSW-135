@@ -15,7 +15,7 @@ app.use("/coffee", require("./routes/coffeeRouter.js"))
 
 
 // Connect to DB
-// mongoose.connect('mongodb+srv://BryanU:Allen001!@cluster0.8j51wpl.mongodb.net/test',
+// mongoose.connect('mongodb+srv://BryanU:A******!@cluster0.8j51wpl.mongodb.net/test',
 //   {
 //     useNewUrlParser: true,
 //     useUnifiedTopology: true,
@@ -28,7 +28,7 @@ app.use("/coffee", require("./routes/coffeeRouter.js"))
 main().catch(err => console.log(err));
 
 async function main() {
-  await mongoose.connect('mongodb+srv://BryanU:Allen001!@cluster0.8j51wpl.mongodb.net/test');
+  await mongoose.connect('mongodb+srv://BryanU:A******!@cluster0.8j51wpl.mongodb.net/test');
 }
 
 //global error-handler 
