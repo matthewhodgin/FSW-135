@@ -3,11 +3,11 @@ const app = express()
 require('dotenv').config()
 const morgan = require('morgan')
 const mongoose = require('mongoose')
-const expressJwt = require('express-jwt')
+const {expressjwt} = require('express-jwt')
 // const { setThePassword } = require('whatwg-url')
 
-app.use(express.json())
-app.use(morgan('dev'))
+// app.use(express.json())
+// app.use(morgan('dev'))
 
 const PORT = 5432;
 
@@ -17,7 +17,7 @@ app.use(morgan('dev'));
 
 
 // Routes 
-app.use("/climate", require("./routes/climateRouter.js"))
+// app.use("/climate", require("./routes/climateRouter.js"))
 
 
 // Connect to DB
@@ -38,21 +38,21 @@ async function main() {
 }
 
 app.use('/auth', require('./routes/authRouter.js'))
-app.use('/api', expressJwt({secret: process.env.SECRET, algorithms: ['RS256']}))
+app.use('/api', expressjwt({secret: process.env.SECRET, algorithms: ['HS256']}))
 app.use('/api/todo', require('./routes/todoRouter.js'))
 
 //global error-handler 
-app.use((err, req, res, next) => {
-    if (res.headersSent) {
-        return next(err)
-      }
-      res.status(500)
-      res.render('error', { error: err })
-    }
-)
+// app.use((err, req, res, next) => {
+//     if (res.headersSent) {
+//         return next(err)
+//       }
+//       res.status(500)
+//       res.render('error', { error: err })
+//     }
+// )
 
 app.use((err, req, res, next) => {
-  if (err.name == "Unauthorized Error") {
+  if (err.name == "UnauthorizedError") {
       res.status(err.status)
     }
   return res.send({ errMsg: err.message})

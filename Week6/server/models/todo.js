@@ -15,7 +15,7 @@ const todoSchema = new mongoose.Schema({
     },
     imgUrl: {
         type: String,
-        required: true
+        // required: true
     },
     user: {
         type: mongoose.Schema.Types.ObjectId,
@@ -24,5 +24,5 @@ const todoSchema = new mongoose.Schema({
     }
 })
 
-module.exports - mongoose.model("Todo", todoSchema)
+module.exports = mongoose.model("Todo", todoSchema)
 

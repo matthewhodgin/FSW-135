@@ -2,7 +2,7 @@ const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 const bcrypt = require('bcrypt')
 
-const todoSchema = new mongoose.Schema({
+const userSchema = new mongoose.Schema({
     username: {
         type: String,
         required: true,
@@ -40,6 +40,11 @@ userSchema.methods.withoutPassword = function() {
     }
 
 
-userSchema.methods.checkPassword =
+userSchema.methods.checkPassword = function(passwordAttempt, callback) {
+    bcrypt.compare(passwordAttempt, this.password, (err, isMatch) => {
+        if (err) return callback (err)
+        return callback(null, isMatch)
+    })
+}
 
-module.exports - mongoose.model("User", todoSchema)
+module.exports = mongoose.model("User", userSchema)

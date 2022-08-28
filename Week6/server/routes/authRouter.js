@@ -5,7 +5,8 @@ const jwt = require('jsonwebtoken')
 
 //Signup
 authRouter.post("/signup", (req, res, next) => {
-    User.findOne({ username: req.body.usernmae.toLowerCase() }, (err, user) => {
+  console.log(req.body)
+    User.findOne({ username: req.body.username.toLowerCase() }, (err, user) => {
     if(err){
         res.status(500)
         return next(err)
@@ -14,7 +15,7 @@ authRouter.post("/signup", (req, res, next) => {
         res.status(403)
         return next(new Error('Username Already Exists'))
     }
-    const newUser = new User(res.body)
+    const newUser = new User(req.body)
     newUser.save((err, savedUser) => {
         if (err){
             res.status(500)
@@ -28,13 +29,15 @@ authRouter.post("/signup", (req, res, next) => {
   
   // Login
   authRouter.post("/login", (req, res, next) => {
+    console.log(req.body)
     const failedLogin = 'Username or Password is Incorrect'
     User.findOne({ username: req.body.username.toLowerCase() }, (err, user) => {
+      console.log(user)
       if(err){
         res.status(500)
         return next(err)
       }
-      if(!user || req.body.password !== user.password){
+      if(!user){
         res.status(403)
         return next(new Error('Invalid Credentials'))
       }
