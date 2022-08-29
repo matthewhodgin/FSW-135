@@ -21,7 +21,7 @@ app.use(morgan('dev'));
 
 
 // Connect to DB
-mongoose.connect('mongodb+srv://BryanU:Allen001!@cluster0.8j51wpl.mongodb.net/test',
+mongoose.connect('mongodb+srv://BryanU:A******1!@cluster0.8j51wpl.mongodb.net/test',
   {
     useNewUrlParser: true,
     useUnifiedTopology: true,
@@ -34,7 +34,7 @@ mongoose.connect('mongodb+srv://BryanU:Allen001!@cluster0.8j51wpl.mongodb.net/te
 main().catch(err => console.log(err));
 
 async function main() {
-  await mongoose.connect('mongodb+srv://BryanU:Allen001!@cluster0.8j51wpl.mongodb.net/test');
+  await mongoose.connect('mongodb+srv://BryanU:A******1!@cluster0.8j51wpl.mongodb.net/test');
 }
 
 app.use('/auth', require('./routes/authRouter.js'))
