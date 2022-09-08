@@ -12,7 +12,7 @@ app.use(morgan('dev'));
 
 
 // Connect to DB
-mongoose.connect('mongodb+srv://BryanU:#1234567@cluster0.8j51wpl.mongodb.net/test',
+mongoose.connect('mongodb+srv://BryanU:password...@cluster0.8j51wpl.mongodb.net/test',
   {
     useNewUrlParser: true,
     useUnifiedTopology: true,
